@@ -24,6 +24,8 @@ Go on and follow [**Sentdex**](https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC
 
 He has around 1k videos on YouTube. Do browse around to see what interests you.
 
-Website: <https://pythonprogramming.net>
+* * *
+
+**Website:** <https://pythonprogramming.net>
 
 # *Happy Coding!*
