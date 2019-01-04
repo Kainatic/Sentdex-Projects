@@ -1,11 +1,7 @@
 import itertools
-import random		# Random library
 
 
 def fin(current_game):
-
-	# def tie(current_game):
-		# Something
 
 	def all_same(l):
 		if l.count(l[0]) == len(l) and l[0] != 0:
@@ -43,7 +39,13 @@ def fin(current_game):
 			print(f"Player {check[0]} is the winner vertically (|)!")
 			return True
 
-	return False
+	# Tie
+	for row in current_game:
+		for col in row:
+			if col == 0:
+				return False
+	print("Stalemate! It's a tie.")
+	return True
 
 
 def game_board(game_map, player=0, row=0, column=0, just_display=False):
@@ -58,8 +60,8 @@ def game_board(game_map, player=0, row=0, column=0, just_display=False):
 			print(count, row)
 		return game_map, True
 
-	except IndexError as e:
-		print(f"Error: Make sure you input correct value for row/column. Choices: {choice_options}", e)
+	except IndexError:
+		print(f"Error: Make sure you input correct value for row/column. Choices: {choice_options}")
 		return game_map, False
 
 	except Exception as e:
@@ -78,18 +80,18 @@ while play:
 		game_size = 3
 		print("Invalid size! Game set to classic 3x3 tic tac toe.")
 	game = [[0 for i in range(game_size)] for i in range(game_size)]
-	
-	if game_size in range(2, 4):
+
+	if game_size in range(2, 5):
 		max_players = 2;
 	else:
 		try:
-			max_players = int(input("How many players? "))
+			max_players = int(input(f"How many players? {list(range(2, game_size-1))}: "))
 		except ValueError:
 			max_players = 0
-		if not max_players in range(2,game_size):
+		if not max_players in range(2, game_size-1):
 			max_players = 2
 			print("Oops! Can't play with that no. of players. Default set as 2 players.")
-	players = list(range(1,max_players+1))
+	players = list(range(1, max_players+1))
 
 	print(f"Starting a {game_size}x{game_size} game with {max_players} players...")
 	choice_options = list(range(len(game)))
@@ -103,18 +105,15 @@ while play:
 		played = False
 
 		while not played:
-			try:
-				column_choice = int(input(f"What column do you want to play? {choice_options}: "))
-			except ValueError:
-				print(f"Error: Make sure you input row/column as a \"number\" in given range ({choice_options}). Choosing random value...")
-				column_choice = random.randrange(game_size)
-
-			try:
-				row_choice = int(input(f"What row do you want to play? {choice_options}: "))
-			except ValueError:
-				print(f"Error: Make sure you input row/column as a \"number\" in given range ({choice_options}). Choosing random value...")
-				row_choice = random.randrange(game_size)
-
+			while True:
+				try:
+					column_choice = int(input(f"What column do you want to play? {choice_options}: "))
+					row_choice = int(input(f"What row do you want to play? {choice_options}: "))
+				except ValueError:
+					print(f"Error: Make sure you input row/column as a \"number\" in given range {choice_options}.")
+					continue
+				else:
+					break
 			game, played = game_board(game, current_player, row_choice, column_choice)
 
 		if fin(game):
