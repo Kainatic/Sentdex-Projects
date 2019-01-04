@@ -26,4 +26,4 @@ He has around 1k videos on YouTube. Do browse around to see what interests you.
 
 Website: <https://pythonprogramming.net>
 
-# Happy Coding!
+# *Happy Coding!*
