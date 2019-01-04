@@ -14,7 +14,7 @@ Go on and follow [**Sentdex**](https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC
 
 > He has all types of Python Programming tutorials, going further than just the basics.
 
-#### Learn about:
+### Learn about:
 * Machine Learning,
 * Finance,
 * Data Analysis,
